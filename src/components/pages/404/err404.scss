@@ -1,0 +1,25 @@
+.error-404 {
+    .error-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 400px;
+        height: 100vh;
+        background-image: radial-gradient(circle, #4d7bca, #2b4b80);
+        color: #fff;
+    }
+        
+    .error-heading {
+        margin: 0 0 10px;
+        font-size: 8em;
+        text-shadow: 0px 1px 4px #393333;
+        font-weight: 700;
+    }
+        
+    .error-subheading {
+        margin: 0 0 30px;
+        font-size: 1.5em;
+        letter-spacing: 2px;
+    }
+}
