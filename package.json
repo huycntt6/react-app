@@ -2,7 +2,7 @@
   "name": "react_app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "proxy": "https://modest-golick-6cc850.netlify.app",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.0",
     "@testing-library/jest-dom": "^4.2.4",

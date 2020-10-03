@@ -17,7 +17,7 @@ class User extends React.Component{
     async componentDidMount(){
         if(!this.state.logged)return;
         const auth = axios.create({
-            baseURL: 'http://localhost:3000/api',
+            baseURL: 'https://admiring-heisenberg-b7fd45.netlify.app/.netlify/functions/api',
             headers: {
                 Authorization: localStorage.getItem('auth-token')
             }

@@ -33,7 +33,7 @@ class Register extends React.Component{
             email: this.state.email,
             password: this.state.password
         }
-        const res = await axios.post('http://localhost:3000/api/user/register', user);
+        const res = await axios.post('https://admiring-heisenberg-b7fd45.netlify.app/.netlify/functions/api/user/register', user);
         let status = res.data.success;
         let errCode = res.data.error_code || '';
         if(!status && errCode === '101'){
