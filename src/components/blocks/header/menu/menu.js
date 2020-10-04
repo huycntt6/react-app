@@ -4,6 +4,7 @@ import './menu.scss';
 import * as $ from 'jquery/dist/jquery.min.js';
 
 const Menu = () => {
+    
     $(document).ready(function(){
         const wMenu = $('.main-menu').width() - 48;
         var show = false;
@@ -31,6 +32,11 @@ const Menu = () => {
         if (window.matchMedia('(max-width: 1024px)').matches) {
             $('.main-menu').css('transform', 'translate(-'+ (wMenu+48) +'px, -50%)');
             $('.bars-mobile').css('display', 'block');
+            $('.bars-mobile').on('touchmove', function (event) {
+                let touch = event.originalEvent.touches[0];
+                $(this).css('transform', 'translate(' + (touch.pageX - 18) + 'px' + ',' + (touch.pageY - 18) + 'px)');
+                
+            });
             $('.main-menu li').unbind();
         }else{
             $('.bars-mobile').css('display', 'none');
@@ -45,6 +51,7 @@ const Menu = () => {
             });
         }
     }
+    
     return(
         <div className="header-menu">
             <button className="bars-mobile btn btn-primary" type="button">&#9776;</button>
