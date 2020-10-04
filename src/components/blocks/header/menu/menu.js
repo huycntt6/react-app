@@ -33,8 +33,9 @@ const Menu = () => {
             $('.main-menu').css('transform', 'translate(-'+ (wMenu+48) +'px, -50%)');
             $('.bars-mobile').css('display', 'block');
             $('.bars-mobile').on('touchmove', function (event) {
-                let touch = event.originalEvent.touches[0];
-                $(this).css('transform', 'translate(' + (touch.pageX - 18) + 'px' + ',' + (touch.pageY - 18) + 'px)');
+                let x = event.originalEvent.touches[0].pageX - 18;
+                let y = event.originalEvent.touches[0].pageY - 18;
+                $(this).css('transform', 'translate('+x+'px,'+y+'px)');
                 
             });
             $('.main-menu li').unbind();
