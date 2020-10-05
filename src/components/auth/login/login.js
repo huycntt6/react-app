@@ -80,6 +80,7 @@ class Login extends React.Component{
     successToast = (text)=>toast.success(text, this.configToast);
 
     render(){
+        const disable = this.state.loadingHidden?'disabled': '';
         if(this.state.logged){
             return <Redirect to="/user"/>
         }
@@ -118,7 +119,7 @@ class Login extends React.Component{
                                     Chưa có tài khoản? <Link to="/user/register" className="underlineHover" href="#">Đăng ký ngay</Link>
                                 </div>
                                 
-                                <button type="submit" className="fourth zero-raduis" >
+                                <button type="submit" className={"fourth zero-raduis " + this.state.loadingHidden}>
                                     <span className="spinner-grow spinner-grow-sm" hidden={this.state.loadingHidden} role="status" aria-hidden="true"></span> Đăng Nhập
                                 </button>
                             </form>

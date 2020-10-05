@@ -119,7 +119,7 @@ class Register extends React.Component{
                                 <div id="formFooter">
                                     Đã có tài khoản? <Link to="/user/login" className="underlineHover" href="#">Đăng nhập</Link>
                                 </div>
-                                <button type="submit" className="fourth zero-raduis" >
+                                <button type="submit" className={"fourth zero-raduis " + this.state.loadingHidden} >
                                 <span className="spinner-grow spinner-grow-sm" hidden={this.state.loadingHidden} role="status" aria-hidden="true"></span> Đăng Ký
                                 </button>
                             </form>
