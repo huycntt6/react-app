@@ -59,6 +59,13 @@
 		top: 0;
 		left: 0;
 		position: fixed;
-		//transition: all .1s ease;
+		z-index: 9999999999999999;
+		width: 42px;
+		display: none;
+	}
+	.animate i{
+		&::before{
+			content: '\f0b2';
+		}
 	}
 }

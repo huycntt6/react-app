@@ -4,7 +4,7 @@ class Home extends React.Component{
     componentDidMount(){
         
         
-        console.log('home');
+        //console.log('home');
         
     }
     render(){

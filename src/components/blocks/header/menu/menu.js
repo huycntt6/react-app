@@ -5,15 +5,15 @@ import * as $ from 'jquery/dist/jquery.min.js';
 import Draggable from 'react-draggable';
 
 class Menu extends React.Component {
+    
     constructor(props){
         super(props);
         this.state = {
-            activeDrags: 0,
-            deltaPosition: {
-              x: 0, y: 0
-            },
             isShow: false,
-            width: 0
+            width: 0,
+            isDrag: false,
+            icon: 'fas fa-bars',
+            animate: ''
         };
     }
     componentDidMount(){
@@ -28,6 +28,13 @@ class Menu extends React.Component {
                 isShow: false
             });
             this.effectMenu(wMenu);
+        });
+        $('.main-menu ul li a').click(()=>{
+            this.setState({
+                isShow: false
+            });
+            $('.main-menu ul li').css('transform', 'translateX(0)');
+            this.setState({icon: 'fas fa-bars'});
         });
     }
     
@@ -50,41 +57,40 @@ class Menu extends React.Component {
         }
     }
 
-    // onStart = () => {
-    //     this.setState({activeDrags: ++this.state.activeDrags});
-    //   };
+    onStart = () => {
+        this.setState({animate: 'animate'});
+    };
     
-    // onStop = () => {
-    //     this.setState({activeDrags: --this.state.activeDrags});
-    // };
-    handleStart(){
-        // let isShow = this.state.isShow;
-        // if(isShow){
-        //     this.setState({
-        //         isShow: false
-        //     });
-        //     $(this).removeClass('tran-0');
-        //     $('.main-menu ul li').css('transform', 'translateX(0)');
-        // }else{
-        //     this.setState({
-        //         isShow: true
-        //     });
-        //     $(this).addClass('tran-0');
-        //     $('.main-menu ul li').css('transform', 'translateX('+ (this.state.width - 15 + 48) +'px)');
-        // }
-        // console.log(this.state.width);
-    }
-    render(){
+    onStop = () => {
+        let isDragMenu = this.state.isDrag;
+        let element = $('.main-menu ul li');
+        if(!isDragMenu){
+            let isShowMenu = !this.state.isShow;
+            this.setState({isShow: isShowMenu});
+            if(isShowMenu){
+                element.css('transform', 'translateX('+ (this.state.width - 15 + 48) +'px)');
+                this.setState({icon: 'fas fa-times'});
+                this.setState({isShow: true});
+            }else{
+                element.css('transform', 'translateX(0)');
+                this.setState({icon: 'fas fa-bars'});
+            }
+        }
+        this.setState({isDrag: false});
+        this.setState({animate: ''});
+    };
 
-        
-        
+    onDrag = () => {
+        this.setState({isDrag: true});
+    }
+
+    render(){    
         return(
             <div className="header-menu">
-                <Draggable onStop={this.handleStart}>
-                    <button className="bars-mobile btn btn-primary" type="button">&#9776;</button>
+                <Draggable onStop={this.onStop} onStart={this.onStart} onDrag={this.onDrag} defaultPosition={{x: 20, y: 20}}>
+                    <button className={"bars-mobile btn btn-primary "+this.state.animate} type="button"><i className={this.state.icon}></i></button>
                 </Draggable>
                 <div className="main-menu">
-                    
                     <ul>
                         <li>
                             <Link to="/">
