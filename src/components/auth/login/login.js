@@ -80,7 +80,6 @@ class Login extends React.Component{
     successToast = (text)=>toast.success(text, this.configToast);
 
     render(){
-        const disable = this.state.loadingHidden?'disabled': '';
         if(this.state.logged){
             return <Redirect to="/user"/>
         }
