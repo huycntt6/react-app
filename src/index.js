@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import'@fortawesome/fontawesome-free/css/all.css';
 import 'react-toastify/dist/ReactToastify.css';
 //import js
-import 'bootstrap/dist/js/bootstrap.min.js';
+//import 'bootstrap/dist/js/bootstrap.min.js';
 
 ReactDOM.render(
   <BrowserRouter>
