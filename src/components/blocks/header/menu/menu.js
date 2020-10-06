@@ -102,7 +102,6 @@ class Menu extends React.Component {
     render(){    
         return(
             <div className="header-menu">
-                <div className="status">null</div>
                 <Draggable onStop={this.onStop} onStart={this.onStart} onDrag={this.handleDrag} defaultPosition={{x: 20, y: 20}}>
                     <button className={"bars-mobile btn btn-primary "+this.state.animate} type="button"><i className={this.state.icon}></i></button>
                 </Draggable>
