@@ -13,7 +13,10 @@ class Menu extends React.Component {
             width: 0,
             isDrag: false,
             icon: 'fas fa-bars',
-            animate: ''
+            animate: '',
+            deltaPosition: {
+                x: 0, y: 0
+            }
         };
     }
     componentDidMount(){
@@ -58,40 +61,61 @@ class Menu extends React.Component {
     }
 
     onStart = () => {
-        this.setState({animate: 'animate'});
-        $('.status').html('on start');
+        
+        // this.setState({animate: 'animate'});
+        // $('.status').html('on start');
+        
     };
     
     onStop = () => {
-        let isDragMenu = this.state.isDrag;
-        let element = $('.main-menu ul li');
-        if(!isDragMenu){
-            let isShowMenu = !this.state.isShow;
-            this.setState({isShow: isShowMenu});
-            if(isShowMenu){
-                element.css('transform', 'translateX('+ (this.state.width - 15 + 48) +'px)');
-                this.setState({icon: 'fas fa-times'});
-                this.setState({isShow: true});
-            }else{
-                element.css('transform', 'translateX(0)');
-                this.setState({icon: 'fas fa-bars'});
-            }
-        }
-        this.setState({isDrag: false});
-        this.setState({animate: ''});
-        $('.status').html('on stop');
+        // let isDragMenu = this.state.isDrag;
+        // let element = $('.main-menu ul li');
+        // if(!isDragMenu){
+        //     let isShowMenu = !this.state.isShow;
+        //     this.setState({isShow: isShowMenu});
+        //     if(isShowMenu){
+        //         element.css('transform', 'translateX('+ (this.state.width - 15 + 48) +'px)');
+        //         this.setState({icon: 'fas fa-times'});
+        //         this.setState({isShow: true});
+        //     }else{
+        //         element.css('transform', 'translateX(0)');
+        //         this.setState({icon: 'fas fa-bars'});
+        //     }
+        // }
+        // this.setState({isDrag: false});
+        // this.setState({animate: ''});
+        // $('.status').html('on stop');
+      
+        $('.status').html('null');
     };
 
     onDrag = () => {
-        this.setState({isDrag: true});
-        $('.status').html('on drag');
+        // this.setState({isDrag: true});
+        // $('.status').html('on drag');
     }
+
+    handleDrag = (e, ui) => {
+        const {x, y} = this.state.deltaPosition;
+        this.setState({
+          deltaPosition: {
+            x: x + ui.deltaX,
+            y: y + ui.deltaY,
+          }
+        });
+        const newX = this.state.deltaPosition.x;
+        const newY = this.state.deltaPosition.y;
+        if(newX !== x || newY !== y){
+            console.log('is move');
+            $('.status').html('on drag');
+        }
+        //console.log('X: '+this.state.deltaPosition.x);
+    };
 
     render(){    
         return(
             <div className="header-menu">
                 <div className="status">null</div>
-                <Draggable onStop={this.onStop} onStart={this.onStart} onDrag={this.onDrag} defaultPosition={{x: 20, y: 20}}>
+                <Draggable onStop={this.onStop} onStart={this.onStart} onDrag={this.handleDrag} defaultPosition={{x: 20, y: 20}}>
                     <button className={"bars-mobile btn btn-primary "+this.state.animate} type="button"><i className={this.state.icon}></i></button>
                 </Draggable>
                 <div className="main-menu">
