@@ -19,6 +19,7 @@ class Menu extends React.Component {
             }
         };
     }
+
     componentDidMount(){
         const wMenu = $('.main-menu').width() - 48;
         this.setState({
@@ -102,8 +103,8 @@ class Menu extends React.Component {
     render(){    
         return(
             <div className="header-menu">
-                <Draggable onStop={this.onStop} onStart={this.onStart} onDrag={this.handleDrag} defaultPosition={{x: 20, y: 20}}>
-                    <button className={"bars-mobile btn btn-primary "+this.state.animate} type="button"><i className={this.state.icon}></i></button>
+                <Draggable onStop={this.onStop} onStart={this.onStart} onDrag={this.handleDrag} handle=".bars-mobile" defaultPosition={{x: 20, y: 20}}>
+                    <button className={"bars-mobile "+this.state.animate} type="button"><i className={this.state.icon}></i></button>
                 </Draggable>
                 <div className="main-menu">
                     <ul>
@@ -152,7 +153,6 @@ class Menu extends React.Component {
             </div>
         );
     }
-    
 }
 
 export default Menu;
