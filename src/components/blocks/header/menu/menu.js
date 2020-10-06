@@ -12,7 +12,7 @@ class Menu extends React.Component {
             isShow: false,
             width: 0,
             isDrag: false,
-            icon: 'fas fa-dice-three',
+            icon: 'fas fa-bars',
             animate: '',
             deltaPosition: {
                 x: 0, y: 0
@@ -74,11 +74,11 @@ class Menu extends React.Component {
             this.setState({isShow: isShowMenu});
             if(isShowMenu){
                 element.css('transform', 'translateX('+ (this.state.width - 15 + 48) +'px)');
-                this.setState({icon: 'fas fa-dice-five'});
+                this.setState({icon: 'fas fa-times'});
                 this.setState({isShow: true});
             }else{
                 element.css('transform', 'translateX(0)');
-                this.setState({icon: 'fas fa-dice-three'});
+                this.setState({icon: 'fas fa-bars'});
             }
         }
         this.setState({isDrag: false});
@@ -104,7 +104,7 @@ class Menu extends React.Component {
         return(
             <div className="header-menu">
                 <Draggable onStop={this.onStop} onStart={this.onStart} onDrag={this.handleDrag} handle=".bars-mobile" defaultPosition={{x: 20, y: 20}}>
-                    <button className={this.state.icon+" bars-mobile "+this.state.animate} type="button"></button>
+                    <button className={"bars-mobile btn btn-primary "+this.state.animate} type="button"><i className={this.state.icon}></i></button>
                 </Draggable>
                 <div className="main-menu">
                     <ul>

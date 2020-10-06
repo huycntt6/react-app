@@ -60,8 +60,7 @@
 		left: 0;
 		position: fixed;
 		z-index: 9999999999999999;
-		background-color: transparent;
-		font-size: 30px;
+		width: 42px;
 		display: none;
 		border: none;
 		&:focus{
@@ -69,7 +68,7 @@
 			box-shadow: none !important;
 		}
 	}
-	.animate{
+	.animate i{
 		&::before{
 			content: '\f0b2';
 		}
