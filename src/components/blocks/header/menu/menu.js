@@ -59,6 +59,7 @@ class Menu extends React.Component {
 
     onStart = () => {
         this.setState({animate: 'animate'});
+        $('.status').html('on start');
     };
     
     onStop = () => {
@@ -78,15 +79,18 @@ class Menu extends React.Component {
         }
         this.setState({isDrag: false});
         this.setState({animate: ''});
+        $('.status').html('on stop');
     };
 
     onDrag = () => {
         this.setState({isDrag: true});
+        $('.status').html('on drag');
     }
 
     render(){    
         return(
             <div className="header-menu">
+                <div className="status">null</div>
                 <Draggable onStop={this.onStop} onStart={this.onStart} onDrag={this.onDrag} defaultPosition={{x: 20, y: 20}}>
                     <button className={"bars-mobile btn btn-primary "+this.state.animate} type="button"><i className={this.state.icon}></i></button>
                 </Draggable>
