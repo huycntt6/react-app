@@ -30,6 +30,7 @@ class Menu extends React.Component {
             this.setState({
                 isShow: false
             });
+            this.setState({icon: 'fas fa-bars'});
             this.effectMenu(wMenu);
         });
         $('.main-menu ul li a').click(()=>{
