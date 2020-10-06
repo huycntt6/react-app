@@ -61,38 +61,27 @@ class Menu extends React.Component {
     }
 
     onStart = () => {
-        
-        // this.setState({animate: 'animate'});
-        // $('.status').html('on start');
-        
+        this.setState({animate: 'animate'});
     };
     
     onStop = () => {
-        // let isDragMenu = this.state.isDrag;
-        // let element = $('.main-menu ul li');
-        // if(!isDragMenu){
-        //     let isShowMenu = !this.state.isShow;
-        //     this.setState({isShow: isShowMenu});
-        //     if(isShowMenu){
-        //         element.css('transform', 'translateX('+ (this.state.width - 15 + 48) +'px)');
-        //         this.setState({icon: 'fas fa-times'});
-        //         this.setState({isShow: true});
-        //     }else{
-        //         element.css('transform', 'translateX(0)');
-        //         this.setState({icon: 'fas fa-bars'});
-        //     }
-        // }
-        // this.setState({isDrag: false});
-        // this.setState({animate: ''});
-        // $('.status').html('on stop');
-      
-        $('.status').html('null');
+        let isDragMenu = this.state.isDrag;
+        let element = $('.main-menu ul li');
+        if(!isDragMenu){
+            let isShowMenu = !this.state.isShow;
+            this.setState({isShow: isShowMenu});
+            if(isShowMenu){
+                element.css('transform', 'translateX('+ (this.state.width - 15 + 48) +'px)');
+                this.setState({icon: 'fas fa-times'});
+                this.setState({isShow: true});
+            }else{
+                element.css('transform', 'translateX(0)');
+                this.setState({icon: 'fas fa-bars'});
+            }
+        }
+        this.setState({isDrag: false});
+        this.setState({animate: ''});
     };
-
-    onDrag = () => {
-        // this.setState({isDrag: true});
-        // $('.status').html('on drag');
-    }
 
     handleDrag = (e, ui) => {
         const {x, y} = this.state.deltaPosition;
@@ -105,10 +94,8 @@ class Menu extends React.Component {
         const newX = this.state.deltaPosition.x;
         const newY = this.state.deltaPosition.y;
         if(newX !== x || newY !== y){
-            console.log('is move');
-            $('.status').html('on drag');
+            this.setState({isDrag: true});
         }
-        //console.log('X: '+this.state.deltaPosition.x);
     };
 
     render(){    
