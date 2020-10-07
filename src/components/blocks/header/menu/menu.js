@@ -103,8 +103,17 @@ class Menu extends React.Component {
     render(){    
         return(
             <div className="header-menu">
-                <Draggable onStop={this.onStop} onStart={this.onStart} onDrag={this.handleDrag} handle=".fas" defaultPosition={{x: 20, y: 20}}>
-                    <button className={"bars-mobile btn btn-primary "+this.state.animate} type="button"><i className={"fas "+this.state.icon}></i></button>
+                <Draggable
+                onStop={this.onStop}
+                onStart={this.onStart}
+                onDrag={this.handleDrag}
+                handle=".bars-mobile "
+                defaultPosition={{x: 20, y: 20}}>
+                    <div
+                    className={"bars-mobile btn btn-primary "+this.state.animate}
+                    type="button">
+                        <i className={"fas "+this.state.icon}></i>
+                    </div>
                 </Draggable>
                 <div className="main-menu">
                     <ul>
