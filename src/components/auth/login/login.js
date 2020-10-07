@@ -85,8 +85,8 @@ class Login extends React.Component{
         }
         return(
             <div className="login">
-                <div className="container mt-5">
-                    <div className="d-flex justify-content-center h-100">
+                <div className="container form-main">
+                    <div className="d-flex justify-content-center h-100 child-form-main">
                         <div id="formContent">
                    
                             <div className="first">
