@@ -110,8 +110,7 @@ class Menu extends React.Component {
                 handle=".fas"
                 defaultPosition={{x: 20, y: 20}}>
                     <button
-                    className={"bars-mobile "+this.state.animate}
-                    type="button">
+                    className={"bars-mobile btn-danger "+this.state.animate}>
                         <i className={"fas "+this.state.icon}></i>
                     </button>
                 </Draggable>
