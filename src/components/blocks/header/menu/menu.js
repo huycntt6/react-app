@@ -12,7 +12,7 @@ class Menu extends React.Component {
             isShow: false,
             width: 0,
             isDrag: false,
-            icon: 'fas fa-bars',
+            icon: 'fa-bars',
             animate: '',
             deltaPosition: {
                 x: 0, y: 0
@@ -22,42 +22,42 @@ class Menu extends React.Component {
 
     componentDidMount(){
         const wMenu = $('.main-menu').width() - 48;
+        const eMenu = $('.main-menu li');
         this.setState({
             width: wMenu
         });
-        this.effectMenu(wMenu);
+        this.effectMenu(wMenu, eMenu);
         $(window).resize(() => {
-            $('.main-menu ul li').css('transform', 'translateX(0)');
+            eMenu.css('transform', 'translateX(0)');
             this.setState({
                 isShow: false
             });
-            this.setState({icon: 'fas fa-bars'});
-            this.effectMenu(wMenu);
+            this.setState({icon: 'fa-bars'});
+            this.effectMenu(wMenu, eMenu);
         });
-        $('.main-menu ul li a').click(()=>{
+        $(eMenu).children().click(()=>{
             this.setState({
                 isShow: false
             });
-            $('.main-menu ul li').css('transform', 'translateX(0)');
-            this.setState({icon: 'fas fa-bars'});
+            eMenu.css('transform', 'translateX(0)');
+            this.setState({icon: 'fa-bars'});
         });
     }
     
-    effectMenu(wMenu){
+    effectMenu(wMenu, eMenu){
         if (window.matchMedia('(max-width: 1024px)').matches) {
             $('.main-menu').css('transform', 'translate(-'+ (wMenu+48) +'px, -50%)');
             $('.bars-mobile').css('display', 'block');
-            $('.main-menu li').unbind();
+            eMenu.unbind();
         }else{
             $('.bars-mobile').css('display', 'none');
             $('.main-menu').css('transform', 'translate(-'+ wMenu +'px, -50%)');
-            $('.main-menu li').hover(function(){
+            eMenu.hover(function(){
                 $(this).addClass('tran-0');
-                $('.main-menu ul li').css('transform', 'translateX('+ (wMenu - 15) +'px)');
-            });
-            $('.main-menu li').mouseleave(function(){
+                eMenu.css('transform', 'translateX('+ (wMenu - 15) +'px)');
+            }).mouseleave(function(){
                 $(this).removeClass('tran-0');
-                $('.main-menu ul li').css('transform', 'translateX(0)');
+                eMenu.css('transform', 'translateX(0)');
             });
         }
     }
@@ -74,11 +74,11 @@ class Menu extends React.Component {
             this.setState({isShow: isShowMenu});
             if(isShowMenu){
                 element.css('transform', 'translateX('+ (this.state.width - 15 + 48) +'px)');
-                this.setState({icon: 'fas fa-times'});
+                this.setState({icon: 'fa-times'});
                 this.setState({isShow: true});
             }else{
                 element.css('transform', 'translateX(0)');
-                this.setState({icon: 'fas fa-bars'});
+                this.setState({icon: 'fa-bars'});
             }
         }
         this.setState({isDrag: false});
@@ -103,8 +103,8 @@ class Menu extends React.Component {
     render(){    
         return(
             <div className="header-menu">
-                <Draggable onStop={this.onStop} onStart={this.onStart} onDrag={this.handleDrag} handle=".bars-mobile" defaultPosition={{x: 20, y: 20}}>
-                    <button className={"bars-mobile btn btn-primary "+this.state.animate} type="button"><i className={this.state.icon}></i></button>
+                <Draggable onStop={this.onStop} onStart={this.onStart} onDrag={this.handleDrag} handle=".fas" defaultPosition={{x: 20, y: 20}}>
+                    <button className={"bars-mobile btn btn-primary "+this.state.animate} type="button"><i className={"fas "+this.state.icon}></i></button>
                 </Draggable>
                 <div className="main-menu">
                     <ul>
