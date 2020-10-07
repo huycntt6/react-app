@@ -89,7 +89,7 @@ class Register extends React.Component{
                         <div id="formContent">
                    
                             <div className="first">
-                                <h1 className="my-5">Đăng Ký</h1>
+                                <h1 className="my-5">ĐĂNG KÝ</h1>
                             </div>
                   
                             <form onSubmit={e=>this.register(e)}>

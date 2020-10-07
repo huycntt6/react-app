@@ -90,7 +90,7 @@ class Login extends React.Component{
                         <div id="formContent">
                    
                             <div className="first">
-                                <h1 className="my-5">Đăng Nhập</h1>
+                                <h1 className="my-5">ĐĂNG NHẬP</h1>
                             </div>
                   
                             <form onSubmit={e=>this.login(e)}>
