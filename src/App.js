@@ -46,6 +46,18 @@ class App extends React.Component {
             draggable
             pauseOnHover
         />
+        <ul className="bg-bubbles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </Router>
     );
   }
