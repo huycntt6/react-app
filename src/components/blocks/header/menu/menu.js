@@ -107,13 +107,13 @@ class Menu extends React.Component {
                 onStop={this.onStop}
                 onStart={this.onStart}
                 onDrag={this.handleDrag}
-                handle=".bars-mobile "
+                handle=".fas"
                 defaultPosition={{x: 20, y: 20}}>
-                    <div
-                    className={"bars-mobile btn btn-primary "+this.state.animate}
+                    <button
+                    className={"bars-mobile "+this.state.animate}
                     type="button">
                         <i className={"fas "+this.state.icon}></i>
-                    </div>
+                    </button>
                 </Draggable>
                 <div className="main-menu">
                     <ul>
