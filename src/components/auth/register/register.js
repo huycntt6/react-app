@@ -84,8 +84,8 @@ class Register extends React.Component{
         }
         return(
             <section className="register">
-                <div className="container mt-5">
-                    <div className="d-flex justify-content-center h-100">
+                <div className="container form-main">
+                    <div className="d-flex justify-content-center child-form-main">
                         <div id="formContent">
                    
                             <div className="first">

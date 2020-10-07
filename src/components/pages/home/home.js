@@ -10,9 +10,9 @@ class Home extends React.Component{
     render(){
         
         return(
-            <section>
+            <div className="container">
                 home here!
-            </section>
+            </div>
         );
     }
 }
