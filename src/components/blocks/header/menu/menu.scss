@@ -60,8 +60,12 @@
 		left: 0;
 		position: fixed;
 		z-index: 9999999999999999;
-		width: 42px;
-		font-size: 20px;
+		width: 32px;
+		height: 32px;
+		line-height: 1;
+		border-radius: 5px;
+
+		font-size: 32px;
 		padding: 0;
 		display: none;
 		border: none;
