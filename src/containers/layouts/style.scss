@@ -87,6 +87,60 @@
           }
             
         }
+        .info{
+            padding: 30px;
+            text-align: start;
+            font-family: Poppins,Helvetica,sans-serif;
+            .page-title {
+                display: block;
+                position: relative;
+                margin-bottom: 30px;
+                h1{
+                    color: #222;
+                    font-size: 32px;
+                    font-weight: 600;
+                    font-style: normal;
+                    letter-spacing: 0;
+                }
+                &::after{
+                    position: absolute;
+                    opacity: .45;
+                    top: -10%;
+                    left: -12px;
+                    content: '';
+                    height: 25px;
+                    width: 25px;
+                    background-image: -webkit-repeating-radial-gradient(center center,#0ba376,#0ba376 1px,transparent 0,transparent 100%);
+                    background-image: -moz-repeating-radial-gradient(center center,#0ba376,#0ba376 1px,transparent 0,transparent 100%);
+                    background-image: -ms-repeating-radial-gradient(center center,#0ba376,#0ba376 1px,transparent 0,transparent 100%);
+                    -webkit-background-size: 6px 6px;
+                    background-size: 6px 6px;
+                    z-index: 0;
+                }
+            }
+            .info-list{
+                font-size: 15px;
+                ul{
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    li{
+                        margin-bottom: 10px;
+                        .title{
+                            color: #04b4e0;
+                            margin-right: 5px;
+                            font-weight: 600;
+                        }
+                        .value{
+                            font-weight: 400;
+                            font-style: normal;
+                            line-height: 1.75em;
+                            color: #555;
+                        }
+                    }
+                }
+            }
+        }
     }
     .info-content{
         min-height: 74vh;
