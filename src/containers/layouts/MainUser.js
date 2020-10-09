@@ -7,7 +7,7 @@ import Loader from '../../components/blocks/loader/loader';
 class MainUser extends React.Component {
     constructor(props){
         super(props);
-        let logged = localStorage.getItem('auth-token')?true:false;
+        const logged = localStorage.getItem('auth-token')?true:false;
         this.state = {
             user: '',
             logged,

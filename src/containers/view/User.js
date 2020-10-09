@@ -7,13 +7,13 @@ class User extends React.Component{
         return(
             <div className="row">
                 <div className="col-lg-4 col-md-6 item">
-                    <Link to="/user/1">
+                    <Link to="/user/info">
                         <i className="far fa-id-card"></i>
                         <h4>Information</h4>
                     </Link>
                 </div>
                 <div className="col-lg-4 col-md-6 item">
-                    <Link to="http://google.com" className="change-avatar">
+                    <Link to="/user/password" className="change-avatar">
                         <i className="fas fa-shield-alt"></i>
                         <h4>Password</h4>
                     </Link>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class UserInfo extends React.Component{
+class UserPassword extends React.Component{
     constructor (props){
         super(props);
         const token = localStorage.getItem('auth-token');
@@ -17,11 +17,11 @@ class UserInfo extends React.Component{
         
         return(
             <>
-                <Link to="/user" className="btn btn-primary">user info</Link>
+                <Link to="/user" className="btn btn-primary">user password</Link>
             </>
         );
     }
   
 };
 
-export default UserInfo;
+export default UserPassword;
