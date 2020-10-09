@@ -33,27 +33,31 @@ class Register extends React.Component{
             email: this.state.email,
             password: this.state.password
         }
-        const res = await axios.post('https://admiring-heisenberg-b7fd45.netlify.app/.netlify/functions/api/user/register', user);
-        let status = res.data.success;
-        let errCode = res.data.error_code || '';
-        if(!status && errCode === '101'){
-            this.errorToast('😖 ' + res.data.error.details[0].path + ' không hợp lệ!');
+        try{
+            const res = await axios.post('https://admiring-heisenberg-b7fd45.netlify.app/.netlify/functions/api/user/register', user);
+            let status = res.data.success;
+            let errCode = res.data.error_code || '';
+            if(!status && errCode === '101'){
+                this.errorToast('😖 ' + res.data.error.details[0].path + ' không hợp lệ!');
+                this.setState({
+                    loadingHidden: true
+                });
+                return;
+            }
+            if(!status && errCode !== '101'){
+                this.errorToast( '😖 '+res.data.error);
+                this.setState({
+                    loadingHidden: true
+                });
+                return;
+            }
+            this.successToast('😚 Đăng ký thành công!');
             this.setState({
-                loadingHidden: true
+                registered: true
             });
-            return;
+        }catch(err){
+            alert('Gặp vấn đề về đường truyền, vui lòng thử lại sau!');
         }
-        if(!status && errCode !== '101'){
-            this.errorToast( '😖 '+res.data.error);
-            this.setState({
-                loadingHidden: true
-            });
-            return;
-        }
-        this.successToast('😚 Đăng ký thành công!');
-        this.setState({
-            registered: true
-        });
     }
 
     onChange(e){
@@ -117,7 +121,7 @@ class Register extends React.Component{
                                 name="password" value={this.state.password} />
                                     
                                 <div id="formFooter">
-                                    Đã có tài khoản? <Link to="/user/login" className="underlineHover" href="#">Đăng nhập</Link>
+                                    Đã có tài khoản? <Link to="/login" className="underlineHover" href="#">Đăng nhập</Link>
                                 </div>
                                 <button type="submit" className={"fourth zero-raduis " + this.state.loadingHidden} >
                                 <span className="spinner-grow spinner-grow-sm" hidden={this.state.loadingHidden} role="status" aria-hidden="true"></span> Đăng Ký

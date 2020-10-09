@@ -35,13 +35,7 @@ class Menu extends React.Component {
             this.setState({icon: 'fa-bars'});
             this.effectMenu(wMenu, eMenu);
         });
-        $(eMenu).children().click(()=>{
-            this.setState({
-                isShow: false
-            });
-            eMenu.css('transform', 'translateX(0)');
-            this.setState({icon: 'fa-bars'});
-        });
+        
     }
     
     effectMenu(wMenu, eMenu){
@@ -49,6 +43,13 @@ class Menu extends React.Component {
             $('.main-menu').css('transform', 'translate(-'+ (wMenu+48) +'px, -50%)');
             $('.bars-mobile').css('display', 'block');
             eMenu.unbind();
+            $(eMenu).children().click(()=>{
+                this.setState({
+                    isShow: false
+                });
+                eMenu.css('transform', 'translateX(0)');
+                this.setState({icon: 'fa-bars'});
+            });
         }else{
             $('.bars-mobile').css('display', 'none');
             $('.main-menu').css('transform', 'translate(-'+ wMenu +'px, -50%)');

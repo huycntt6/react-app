@@ -13,7 +13,7 @@ const Logout = () => {
         progress: undefined,
     });
     localStorage.removeItem('auth-token');
-    return <Redirect to="/user/login" />;
+    return <Redirect to="/login" />;
 }
 
 export default Logout;

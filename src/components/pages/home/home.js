@@ -1,4 +1,5 @@
 import React from 'react';
+import './home.scss';
 
 class Home extends React.Component{
     componentDidMount(){
@@ -10,8 +11,8 @@ class Home extends React.Component{
     render(){
         
         return(
-            <div className="container">
-                home here!
+            <div>
+                <h1>Đây la home</h1>
             </div>
         );
     }

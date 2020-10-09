@@ -52,7 +52,7 @@ class Login extends React.Component{
             });
             
         }).catch(err=>{
-            console.log(err);
+            alert('Gặp vấn đề về đường truyền, vui lòng thử lại sau!');
         });
     }
     
@@ -115,11 +115,11 @@ class Login extends React.Component{
                                 value={this.state.password} />
                                     
                                 <div id="formFooter">
-                                    Chưa có tài khoản? <Link to="/user/register" className="underlineHover" href="#">Đăng ký ngay</Link>
+                                    Chưa có tài khoản? <Link to="/register" className="underlineHover" href="#">Đăng ký ngay</Link>
                                 </div>
                                 
                                 <button type="submit" className={"fourth zero-raduis " + this.state.loadingHidden}>
-                                    <span className="spinner-grow spinner-grow-sm" hidden={this.state.loadingHidden} role="status" aria-hidden="true"></span> Đăng Nhập
+                                    <span className="spinner-grow spinner-grow-sm" hidden={this.state.loadingHidden} role="status" aria-hidden="true"></span> Đăng nhập
                                 </button>
                             </form>
                         </div>

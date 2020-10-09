@@ -29,6 +29,10 @@
 						text-align: center;
 						width: 50px;
 					}
+					&:focus{
+						outline: none;
+						border: none;
+					}
 				}
 				&:nth-of-type(1){
 					background-color: #43d788;
