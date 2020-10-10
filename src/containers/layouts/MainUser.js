@@ -2,7 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Resizer from 'react-image-file-resizer';
+//import block
 import Loader from '../../components/blocks/loader/loader';
+import defaultavatar from '../../public/image/default-avatar.png';
 
 class MainUser extends React.Component {
     constructor(props){
@@ -11,8 +14,10 @@ class MainUser extends React.Component {
         this.state = {
             user: '',
             logged,
-            checkToken: true
+            checkToken: true,
+            avatar: null
         }
+        this.uploadAvatar = this.uploadAvatar.bind(this);
     }
 
     async componentDidMount(){
@@ -35,9 +40,19 @@ class MainUser extends React.Component {
                 this.setState({
                     user: res.data.user
                 });
+                if(this.state.user.avatar){
+                    this.setState({
+                        avatar: this.state.user.avatar
+                    });
+                    return;
+                }
+                this.setState({
+                    avatar: defaultavatar
+                });
             }
         }catch(err){
             alert('Gặp vấn đề về đường truyền, vui lòng thử lại sau!');
+            window.location.reload();
         }
     }
 
@@ -58,8 +73,29 @@ class MainUser extends React.Component {
 
     defaultToast = (text)=>toast(text, this.configToast);
 
+    uploadAvatar(event){
+       if(!event.target.files[0])
+       return;
+       Resizer.imageFileResizer(
+            event.target.files[0],
+            300,
+            300,
+            'JPEG',
+            100,
+            0,
+            uri => {
+                this.setState({
+                    avatar: URL.createObjectURL(uri)
+                });
+            },
+            'blob',
+            200,
+            200,
+        );
+    }
     render(){
         var data = this.state.user;
+        
         if(!this.state.logged){
             this.infoToast('😤 Vui lòng đăng nhập!');
             return <Redirect to='/login' />;
@@ -80,7 +116,10 @@ class MainUser extends React.Component {
                     <div className="col-lg-4 info-content">
                         <div className="top">
                             <div className="top-photo">
-                                <img alt="avatar" draggable="false" src="//lmpixels.com/wp/breezycv-wp-lin/demo2/wp-content/uploads/sites/2/2020/06/main_photo.jpg" />
+                                <div className="avatar">
+                                    <img alt="avatar" draggable="false" src={this.state.avatar} />
+                                    <input type="file" accept="image/*" onChange={this.uploadAvatar} />
+                                </div>
                             </div>
                             <div className="top-title">
                                 <h2>{data.name}</h2>

@@ -37,11 +37,13 @@ class UserInfo extends React.Component{
             }
         }catch(err){
             alert('Gặp vấn đề về đường truyền, vui lòng thử lại sau!');
+            window.location.reload();
         }
     }
 
     render(){
-        var data = this.state.user;
+        const data = this.state.user;
+        const link = <Link to="http://google.com">Edit</Link> 
         if(!this.state.logged){
             this.infoToast('😤 Vui lòng đăng nhập!');
             return <Redirect to='/login' />;
@@ -59,26 +61,26 @@ class UserInfo extends React.Component{
         
         return(
             <div className="info">
-                <div class="page-title">
+                <div className="page-title">
                     <h1>{data.name}</h1>
                 </div>
-                <div class="info-list">
+                <div className="info-list">
                     <ul>
                         <li>
-                            <span class="title">Age</span>
-                            <span class="value">32</span>
+                            <span className="title">Age</span>
+                            <span className="value">{data.age?data.age:link}</span>
                         </li>
                         <li>
-                            <span class="title">Address</span>
-                            <span class="value">88 Some Street, Some Town</span>
+                            <span className="title">Address</span>
+                            <span className="value">{data.address?data.address:link}</span>
                         </li>
                         <li>
-                            <span class="title">Email</span>
-                            <span class="value">{data.email}</span>
+                            <span className="title">Email</span>
+                            <span className="value">{data.email}</span>
                         </li>
                         <li>
-                            <span class="title">Phone</span>
-                            <span class="value">+0123 123 456 789</span>
+                            <span className="title">Phone</span>
+                            <span className="value">{data.phone?data.phone:link}</span>
                         </li>
                     </ul>
                 </div>

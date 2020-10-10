@@ -149,18 +149,35 @@
         .top{
             .top-photo{
                 margin: 0 auto 30px;
-                img{
-                    max-height: 150px;
-                    max-width: 150px;
-                    width: auto;
-                    height: auto;
-                    background-color: #fff;
+                .avatar{
+                    width: 150px;
+                    height: 150px;
+                    margin: 0 auto;
+                    position: relative;
+                    overflow: hidden;
+                    box-sizing: border-box;
                     border: 3px solid #fff;
                     border-radius: 50%;
+                    input{
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        left: 0;
+                        top: 0;
+                        opacity: 0;
+                        cursor: pointer;
+                    }
+                }
+                img{
+                    height: 100%;
+                    width: 100%;
+                    background-color: #fff;
+                    object-fit: cover;
                 }
             }
             .top-title{
                 color: #fff;
+                word-wrap: break-word;
                 h2{
                     font-weight: 700;
                 }
