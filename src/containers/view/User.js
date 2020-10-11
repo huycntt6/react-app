@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class User extends React.Component{
-    render(){
-        
+export default () => {
         return(
             <div className="row">
                 <div className="col-lg-4 col-md-6 item">
@@ -32,7 +30,4 @@ class User extends React.Component{
                 </div>
             </div>
         );
-    }
 }
-
-export default User;

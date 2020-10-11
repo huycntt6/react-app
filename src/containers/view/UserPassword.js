@@ -8,13 +8,14 @@ class UserPassword extends React.Component{
         this.state = {
             token: token
         }
+        
     }
 
     render(){
         // if(this.state.token){
         //     return <Redirect to="/login" />;
         // }
-        
+        console.log(this.props.isAuthed);
         return(
             <>
                 <Link to="/user" className="btn btn-primary">user password</Link>

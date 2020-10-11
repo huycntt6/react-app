@@ -2,7 +2,6 @@
   "name": "react_app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://modest-golick-6cc850.netlify.app",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -10,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
+    "http-proxy-middleware": "^1.0.5",
     "jquery": "^3.5.1",
     "node-sass": "^4.14.1",
     "popper.js": "^1.14.3",
