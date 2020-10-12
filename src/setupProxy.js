@@ -6,7 +6,6 @@ module.exports = function(app) {
     createProxyMiddleware({
       target: 'https://admiring-heisenberg-b7fd45.netlify.app',
       changeOrigin: true,
-      //logLevel: 'debug',
       pathRewrite: {
           '^/.netlify': '/.netlify'
       }
