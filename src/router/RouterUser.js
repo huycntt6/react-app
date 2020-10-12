@@ -26,7 +26,7 @@ class RouterUser extends React.Component {
         //console.log(this.props.isAuthed);
         if(!this.state.logged)return;
         const auth = axios.create({
-            baseURL: 'http://localhost:8080/.netlify/functions/api',
+            baseURL: '/.netlify/functions/api',
             headers: {
                 Authorization: localStorage.getItem('auth-token')
             }
