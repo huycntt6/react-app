@@ -25,7 +25,7 @@ class Login extends React.Component{
         this.setState({
             loadingHidden: false
         });
-        axios.post('/.netlify/functions/api/user/login',{
+        axios.post('https://admiring-heisenberg-b7fd45.netlify.app/.netlify/functions/api/user/login',{
             'email': this.state.email,
             'password': this.state.password
         }).then(res => {

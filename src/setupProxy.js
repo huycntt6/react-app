@@ -6,9 +6,9 @@ module.exports = function(app) {
       target: 'https://admiring-heisenberg-b7fd45.netlify.app',
       changeOrigin: true,
       //logLevel: 'debug',
-      pathRewrite: {
-          '^/.netlify': '/.netlify'
-      }
+      // pathRewrite: {
+      //     '^/.netlify': '/.netlify'
+      // }
     })
   );
 };
