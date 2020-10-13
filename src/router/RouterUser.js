@@ -31,7 +31,7 @@ class RouterUser extends React.Component {
             }
         });
         try{
-            const res = await auth.get('/.netlify/functions/api/user');
+            const res = await auth.get('/api/user');
             if(!res.data.success){
                 this.errorToast('😖'+res.data.error);
                 this.setState({

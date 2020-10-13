@@ -2,12 +2,12 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function(app) {
   app.use(
-    '/.netlify',
+    '/api',
     createProxyMiddleware({
-      target: 'https://admiring-heisenberg-b7fd45.netlify.app',
+      target: 'https://server-node-fot.herokuapp.com',
       changeOrigin: true,
       pathRewrite: {
-          '^/.netlify': '/.netlify'
+          '^/api': '/api'
       }
     })
   );
