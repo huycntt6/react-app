@@ -17,7 +17,7 @@ export default ({isLogged, user, checkToken, children, uploadAvatar}) => {
                     <div className="top">
                         <div className="top-photo">
                             <div className="avatar">
-                                <img alt="avatar" draggable="false" src={user.avatar?user.avatar: defaultavatar} />
+                                <img alt="avatar" draggable="false" src={user.avatarURL?user.avatarURL: defaultavatar} />
                                 <input type="file" accept="image/*" onChange={uploadAvatar.bind(this)} />
                             </div>
                         </div>

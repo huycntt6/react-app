@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import Resizer from 'react-image-file-resizer';
 
 import UserMain from '../containers/layouts/MainUser';
 //import user page
@@ -23,7 +22,6 @@ class RouterUser extends React.Component {
     }
 
     async componentDidMount(){
-        //console.log(this.props.isAuthed);
         if(!this.state.logged)return;
         const auth = axios.create({
             headers: {
@@ -59,17 +57,36 @@ class RouterUser extends React.Component {
     }
     errorToast = (text)=>toast.error(text, this.configToast);
 
-    uploadAvatar = (event)=>{
-        if(!event.target.files[0])
-       return;
-       Resizer.imageFileResizer(
-            event.target.files[0],
-            300,300,'JPEG',100,0,
-            uri => {
-                this.setState({});
-            },
-            'blob',200,200,
-        );
+    successToast = (text)=>toast.success(text, this.configToast);
+
+    uploadAvatar = async(e)=>{
+        if(!e.target.files[0])return;
+
+        const file = e.target.files[0]
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('name', this.state.user._id);
+
+        try{
+            const res = await axios.post('http://storage.giahuy.3tc.vn', formData);
+            const res2 = await axios.post('/api/user/avatar', {id: this.state.user._id, avatar: res.data, avatarURL: res.config.url+'/upload/images/'});
+            formData.set('delete', this.state.user.avatar);
+            axios.post('http://storage.giahuy.3tc.vn/upload/delete/',formData);
+            this.setState(prevState => {
+                let user = Object.assign({}, prevState.user);
+                user.avatarURL = res2.data.avatarURL;
+                user.avatar = res2.data.avatar;
+                return { user };
+            })
+            this.successToast('✅ Change avatar success!!!');
+        }catch(err){
+            this.errorToast('Maximum Avatar is 1mb!');
+            return;
+        }
+    }
+
+    componentWillUnmount(){
+        delete(this.state);
     }
 
     render(){
