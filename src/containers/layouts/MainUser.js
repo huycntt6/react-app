@@ -4,7 +4,7 @@ import { Redirect, Link } from 'react-router-dom';
 //import block
 import Loader from '../../components/blocks/loader/loader';
 import defaultavatar from '../../public/image/default-avatar.png';
-export default ({isLogged, user, checkToken, children, uploadAvatar}) => {
+export default ({isLogged, user, checkToken, children, uploadAvatar, loading}) => {
 
     if(!isLogged)return <Redirect to='/login' />;
     if(!checkToken)return<Redirect to='/logout' />;
@@ -17,6 +17,9 @@ export default ({isLogged, user, checkToken, children, uploadAvatar}) => {
                     <div className="top">
                         <div className="top-photo">
                             <div className="avatar">
+                                <div className={"spinner-load "+(loading?'d-flex':'d-none')}>
+                                    <div className="spinner-border text-primary"></div>
+                                </div>
                                 <img alt="avatar" draggable="false" src={user.avatarURL?user.avatarURL: defaultavatar} />
                                 <input type="file" accept="image/*" onChange={uploadAvatar.bind(this)} />
                             </div>

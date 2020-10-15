@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 
 import axios from 'axios';
 import { toast } from 'react-toastify';
+//resize image
+import Resizer from 'react-image-file-resizer';
 
 import UserMain from '../containers/layouts/MainUser';
 //import user page
@@ -17,7 +19,8 @@ class RouterUser extends React.Component {
         this.state = {
             user: '',
             logged,
-            checkToken: true
+            checkToken: true,
+            loading: false
         }
     }
 
@@ -61,26 +64,42 @@ class RouterUser extends React.Component {
 
     uploadAvatar = async(e)=>{
         if(!e.target.files[0])return;
+        this.setState({
+            loading: true
+        });
+        const file = e.target.files[0];
+        
+        const resizeFile = (file) => new Promise(resolve => {
+            Resizer.imageFileResizer(file, 300, 300, 'JPEG', 100, 0,
+            uri => {
+                resolve(uri);
+            },
+            'blob'
+            );
+        });
 
-        const file = e.target.files[0]
+        const image = await resizeFile(file);
         const formData = new FormData();
-        formData.append('file', file);
-        formData.append('name', this.state.user._id);
-
+        
+        formData.append('file', image);
+        formData.append('userID', this.state.user._id);
+        
         try{
-            const res = await axios.post('http://storage.giahuy.3tc.vn', formData);
-            const res2 = await axios.post('/api/user/avatar', {id: this.state.user._id, avatar: res.data, avatarURL: res.config.url+'/upload/images/'});
-            formData.set('delete', this.state.user.avatar);
-            axios.post('http://storage.giahuy.3tc.vn/upload/delete/',formData);
+            const res = await axios.post('/api/user/avatar/add', formData);
             this.setState(prevState => {
                 let user = Object.assign({}, prevState.user);
-                user.avatarURL = res2.data.avatarURL;
-                user.avatar = res2.data.avatar;
+                user.avatarURL = res.data;
                 return { user };
             })
             this.successToast('✅ Change avatar success!!!');
+            this.setState({
+                loading: false
+            })
         }catch(err){
-            this.errorToast('Maximum Avatar is 1mb!');
+            this.errorToast('Error! Please try again later!');
+            this.setState({
+                loading: false
+            })
             return;
         }
     }
@@ -93,9 +112,10 @@ class RouterUser extends React.Component {
         const isLogged = this.state.logged;
         const user = this.state.user;
         const checkToken = this.state.checkToken;
+        const isloading = this.state.loading;
         return (
             
-            <UserMain isLogged = {isLogged} user = {user} checkToken = {checkToken} uploadAvatar = {this.uploadAvatar.bind(this)}>
+            <UserMain isLogged = {isLogged} user = {user} checkToken = {checkToken} uploadAvatar = {this.uploadAvatar.bind(this)} loading= {isloading}>
                 <Switch>
                     <Route path="/user" component={User} exact/>
                     <Route path="/user/info" component={()=><UserInfo user = {user} />} />
