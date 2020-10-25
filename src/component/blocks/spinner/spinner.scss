@@ -1,0 +1,90 @@
+.loading{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.spinner {
+    width: 150px;
+    height: 150px;
+    position: relative;
+  /*   border: 1px solid black; */
+    animation: spin 3s linear infinite;
+  }
+  
+  .spinner .circle:nth-child(1) {
+    width: 20px;
+    height: 20px;
+    border-radius: 0%;
+    background: #ff6b81;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1);
+    animation: positionToCenter 1s ease-in infinite;
+    animation-direction: alternate;
+  }
+  
+  .spinner .circle:nth-child(2) {
+    width: 20px;
+    height: 20px;
+    border-radius: 0;
+    background: #0be881;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: scale(1) translate(0%,0%);
+    animation: positionToCenter 1s ease-in infinite;
+    animation-direction: alternate;
+  }
+  
+  .spinner .circle:nth-child(3) {
+    width: 20px;
+    height: 20px;
+    border-radius: 0%;
+    background: #4bcffa;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: scale(1) translate(0%,0%);
+    animation: positionToCenter 1s ease-in infinite;
+    animation-direction: alternate;
+  }
+  
+  .spinner .circle:nth-child(4) {
+    width: 20px;
+    height: 20px;
+    border-radius: 0%;
+    background: #575fcf;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: scale(1) translate(0%,0%);
+    animation: positionToCenter 1s ease-in infinite;
+    animation-direction: alternate;
+  }
+  
+  
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes positionToCenter {
+    to {
+      left: 50%;
+      top: 50%;
+      bottom: 50%;
+      right: 50%;
+      transform: scale(2) translate(-50%,-50%);
+      background: #1abc9c;
+      border-radius: 50%;
+    }
+  }

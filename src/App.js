@@ -1,18 +1,19 @@
 import React from 'react';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
+
+import Router from './router/Router';
+import Header from './component/blocks/header/Header';
 import { ToastContainer } from 'react-toastify';
+import Bg from './component/blocks/background/bg';
 
-import Routers from './router'
-//import block
-import Bg from './components/blocks/background/bg';
 
-class App extends React.Component {
-
-  render(){
-    return (
-      <div className="App">
-        <Routers />
-        <ToastContainer
+export default () => (
+  <div className="App">
+    <Header/>
+    <Router/>
+    <ToastContainer
             position="top-left"
             autoClose={5000}
             hideProgressBar={false}
@@ -22,11 +23,7 @@ class App extends React.Component {
             pauseOnFocusLoss
             draggable
             pauseOnHover
-        />
-        <Bg/>
-      </div>
-    );
-  }
-}
-
-export default App;
+    />
+    <Bg/>
+  </div>
+);
