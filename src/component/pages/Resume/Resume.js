@@ -110,7 +110,7 @@ export default () => (
                 </div>
                 <ul className="knowledges">
                     <li>Bootstrap 4</li>
-                    <li>Html5</li>
+                    <li>HTML5</li>
                     <li>Css3</li>
                     <li>Jquery</li>
                     <li>Liquid</li>
@@ -133,7 +133,7 @@ export default () => (
             </Col>
         </Row>
         <div className="block-title mt-5">
-            <h3><span>My</span> Project</h3>
+            <h3>My Project</h3>
         </div>
         <Row>
             <Col xs={12} sm={6} md={4} className="project text-center">

@@ -2,9 +2,10 @@ import React from 'react';
 import {Route, Switch, withRouter} from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-import Home from'../component/pages/home/home';
-import About from'../component/pages/about/about';
-import Resume from'../component/pages/Resume/Resume';
+import Home from '../component/pages/home/home';
+import About from '../component/pages/about/about';
+import Resume from '../component/pages/Resume/Resume';
+import Contact from '../component/pages/contact/contact';
 
 import err404 from '../component/pages/404/404';
 
@@ -16,6 +17,7 @@ const PageRouter = ({location}) => {
                     <Route path={'/'} component={Home} exact/>
                     <Route path={'/about'} component={About}/>
                     <Route path={'/resume'} component={Resume}/>
+                    <Route path={'/contact'} component={Contact}/>
                     <Route component={err404}/>
                 </Switch>
             </CSSTransition>
